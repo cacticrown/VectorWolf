@@ -2,7 +2,7 @@
 
 VectorWolf is my simple, lightweight game engine/framework I’m building mainly to create my own games. It’s super basic but covers the essentials like a scene, entity, component structure, rendering systems, and the core stuff you need to get a game running.
 
-It is designed be easy to use and extend, so it’s perfect if you want a minimal setup without the bloat of big engines.
+It is designed to be easy to use and extend, so it’s perfect if you want a minimal setup without the bloat of big engines.
 
 ## What It Does
 
