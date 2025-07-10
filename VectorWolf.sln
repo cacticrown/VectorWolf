@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorWolf", "VectorWolf\VectorWolf.csproj", "{4A3EF502-72D2-4816-B3B4-6408D430AFA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorWolf.Test", "VectorWolf.Test\VectorWolf.Test.csproj", "{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A3EF502-72D2-4816-B3B4-6408D430AFA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3EF502-72D2-4816-B3B4-6408D430AFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3EF502-72D2-4816-B3B4-6408D430AFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3EF502-72D2-4816-B3B4-6408D430AFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7CCF8C2-A311-429B-A205-D563E5CBEB56}
+	EndGlobalSection
+EndGlobal
