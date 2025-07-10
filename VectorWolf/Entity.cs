@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace VectorWolf;
 
@@ -8,6 +9,8 @@ public class Entity
     public Scene Scene;
 
     public List<Component> Components = new List<Component>();
+
+    public Vector2 Position = Vector2.Zero;
 
     public void AddComponent(Component component)
     {

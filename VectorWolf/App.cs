@@ -2,25 +2,29 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using VectorWolf.Graphics.Renderers;
 
 namespace VectorWolf;
 
 public class App : Game
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+    public static App Instance;
+
+    public GraphicsDeviceManager _graphics;
+    public SpriteBatch _spriteBatch;
 
     public AppConfig AppConfig;
     public string AssetsRootDirectory => AppConfig.AssetsRootDirectory;
     public Scene Scene;
 
-    public App(AppConfig appConfig, Scene scene)
+    public App(AppConfig appConfig, Scene scene, Renderer renderer)
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
         Scene = scene;
         AppConfig = appConfig;
+        Instance = this;
     }
 
     public void UpdateConfigChanges()

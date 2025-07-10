@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using VectorWolf;
+﻿using VectorWolf;
+using VectorWolf.Graphics.Renderers;
 
 AppConfig appConfig = new AppConfig
 {
@@ -14,7 +12,7 @@ AppConfig appConfig = new AppConfig
 };
 
 
-using var game = new App(appConfig, new SampleScene());
+using var game = new App(appConfig, new SampleScene(), new DefaultRenderer());
 game.Run();
 
 
@@ -34,6 +32,6 @@ class SampleEntity : Entity
 {
     public override void Update()
     {
-        Debug.WriteLine($"Entity {Id} is updating.");
+
     }
 }
