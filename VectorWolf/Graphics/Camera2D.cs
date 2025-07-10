@@ -7,17 +7,25 @@ public class Camera2D : Component
     public Vector2 Position = Vector2.Zero;
     public float Rotation = 0f;
     public float Zoom = 1f;
+    public bool FollowEntity = false;
 
     public int ViewportWidth => App.Instance.GraphicsDevice.Viewport.Width;
     public int ViewportHeight => App.Instance.GraphicsDevice.Viewport.Height;
 
     public Matrix GetViewMatrix()
     {
-        return
-            Matrix.CreateTranslation(new Vector3(-Position, 0f)) *
-            Matrix.CreateRotationZ(Rotation) *
-            Matrix.CreateScale(Zoom, Zoom, 1f) *
-            Matrix.CreateTranslation(new Vector3(ViewportWidth / 2f, ViewportHeight / 2f, 0f));
+        if(FollowEntity)
+            return
+                Matrix.CreateTranslation(new Vector3(-Entity.Position, 0f)) *
+                Matrix.CreateRotationZ(Entity.Rotation) *
+                Matrix.CreateScale(Zoom, Zoom, 1f) *
+                Matrix.CreateTranslation(new Vector3(ViewportWidth / 2f, ViewportHeight / 2f, 0f));
+        else
+            return
+                Matrix.CreateTranslation(new Vector3(-Position, 0f)) *
+                Matrix.CreateRotationZ(Rotation) *
+                Matrix.CreateScale(Zoom, Zoom, 1f) *
+                Matrix.CreateTranslation(new Vector3(ViewportWidth / 2f, ViewportHeight / 2f, 0f));
     }
 
     public Vector2 WorldToScreen(Vector2 worldPos)

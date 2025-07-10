@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using VectorWolf.Graphics.Renderers;
+using VectorWolf.Utils;
 
 namespace VectorWolf;
 
@@ -17,6 +18,8 @@ public class App : Game
     public string AssetsRootDirectory => AppConfig.AssetsRootDirectory;
     public Scene Scene;
 
+    public Renderer Renderer;
+
     public App(AppConfig appConfig, Scene scene, Renderer renderer)
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -25,6 +28,7 @@ public class App : Game
         Scene = scene;
         AppConfig = appConfig;
         Instance = this;
+        Renderer = renderer;
     }
 
     public void UpdateConfigChanges()
@@ -33,14 +37,16 @@ public class App : Game
         _graphics.PreferredBackBufferWidth = AppConfig.Width;
         _graphics.PreferredBackBufferHeight = AppConfig.Height;
         _graphics.IsFullScreen = AppConfig.IsFullScreen;
+
         _graphics.SynchronizeWithVerticalRetrace = AppConfig.EnableVSync;
-        
+        IsFixedTimeStep = AppConfig.EnableVSync;
+
         _graphics.ApplyChanges();
     }
 
     protected override void Initialize()
     {
-        
+        UpdateConfigChanges();
 
         base.Initialize();
     }
@@ -54,8 +60,8 @@ public class App : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+        Time.Update(gameTime);
+        Input.Update();
 
         Scene.Update();
 
@@ -68,8 +74,8 @@ public class App : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
 
+        Renderer.Render(Scene);
         
 
         base.Draw(gameTime);

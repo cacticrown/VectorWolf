@@ -11,6 +11,7 @@ public class Entity
     public List<Component> Components = new List<Component>();
 
     public Vector2 Position = Vector2.Zero;
+    public float Rotation = 0f;
 
     public void AddComponent(Component component)
     {
