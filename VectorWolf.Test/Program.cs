@@ -14,20 +14,15 @@ AppConfig appConfig = new AppConfig
     AssetsRootDirectory = "Assets"
 };
 
-
 using var game = new App(appConfig, new SampleScene(), new DefaultRenderer());
 game.Run();
-
-
 
 class SampleScene : Scene
 {
     public override void Initialize()
     {
         AddEntity(new SampleEntity());
-
-
-        FinishedInitializing();
+        base.Initialize();
     }
 }
 

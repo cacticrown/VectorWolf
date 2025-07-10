@@ -67,7 +67,7 @@ public class Scene
 
     public virtual void Initialize()
     {
-        
+        FinishedInitializing();
     }
 
     public void FinishedInitializing()
