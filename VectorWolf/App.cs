@@ -52,6 +52,7 @@ public class App : Game
     public void InitScene()
     {
         Scene.Initialize();
+        Scene.LoadContent();
         Scene.FinishedInitializing();
     }
 
@@ -59,14 +60,14 @@ public class App : Game
     {
         UpdateConfigChanges();
 
-        InitScene();
-
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
         RenderContext.SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+        InitScene();
     }
 
     protected override void Update(GameTime gameTime)
