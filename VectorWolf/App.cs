@@ -42,9 +42,24 @@ public class App : Game
         _graphics.ApplyChanges();
     }
 
+    public void SwitchScene(Scene scene)
+    {
+        Scene.OnDestroy();
+        Scene = scene;
+        InitScene();
+    }
+
+    public void InitScene()
+    {
+        Scene.Initialize();
+        Scene.FinishedInitializing();
+    }
+
     protected override void Initialize()
     {
         UpdateConfigChanges();
+
+        InitScene();
 
         base.Initialize();
     }
@@ -52,8 +67,6 @@ public class App : Game
     protected override void LoadContent()
     {
         RenderContext.SpriteBatch = new SpriteBatch(GraphicsDevice);
-
-        Scene.Initialize();
     }
 
     protected override void Update(GameTime gameTime)

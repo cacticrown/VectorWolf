@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using VectorWolf;
+using VectorWolf.Diagnostics;
 using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.Utils;
@@ -14,6 +15,8 @@ AppConfig appConfig = new AppConfig
     AssetsRootDirectory = "Assets"
 };
 
+Log.Info("This is an example for VectorWolf framework");
+Log.Info("Move with WASD and reload the scene by pressing R");
 using var game = new App(appConfig, new SampleScene(), new DefaultRenderer());
 game.Run();
 
@@ -22,7 +25,7 @@ class SampleScene : Scene
     public override void Initialize()
     {
         AddEntity(new SampleEntity());
-        base.Initialize();
+        Log.Info("Scene was initialized");
     }
 }
 
@@ -30,7 +33,7 @@ class SampleEntity : Entity
 {
     private Texture2D _pixel;
 
-    public Rectangle Rect = new Rectangle(10, 10, 100, 100);
+    public Rectangle Rect = new Rectangle(0, 0, 100, 100);
     public Color Color = Color.Black;
 
     public const float Speed = 150f;
@@ -58,6 +61,11 @@ class SampleEntity : Entity
         if (Input.KeyDown(Keys.S))
         {
             Position.Y += Speed * Time.DeltaTime;
+        }
+
+        if (Input.KeyPressed(Keys.R))
+        {
+            App.Instance.SwitchScene(new SampleScene());
         }
 
         Rect.X = (int)Position.X;
