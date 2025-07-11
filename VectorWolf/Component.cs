@@ -19,4 +19,9 @@ public class Component
     {
 
     }
+
+    public virtual void LoadContent()
+    {
+        
+    }
 }

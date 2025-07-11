@@ -80,4 +80,12 @@ public class Scene
             entity.OnSceneStart();
         }
     }
+
+    public void LoadContent()
+    {
+        foreach( var entity in Entities)
+        {
+            entity.LoadContent();
+        }
+    }
 }

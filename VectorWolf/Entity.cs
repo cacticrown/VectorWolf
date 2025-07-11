@@ -7,10 +7,12 @@ public class Entity
 {
     public int Id;
     public Scene Scene;
+    public float Layer = 0;
 
     public ComponentList Components = new ComponentList();
 
     public Vector2 Position = Vector2.Zero;
+    public Vector2 Scale = Vector2.One;
     public float Rotation = 0f;
 
     public void AddComponent(Component component)
@@ -58,6 +60,14 @@ public class Entity
         foreach(IUpdate update in Components.UpdateComponents)
         {
             update.Update();
+        }
+    }
+
+    public virtual void LoadContent()
+    {
+        foreach(Component component in Components)
+        {
+            component.LoadContent();
         }
     }
 
