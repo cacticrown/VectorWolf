@@ -33,7 +33,7 @@ class SampleEntity : Entity
     public Rectangle Rect = new Rectangle(10, 10, 100, 100);
     public Color Color = Color.Black;
 
-    public const float Speed = 15f;
+    public const float Speed = 150f;
 
     public override void OnSceneStart()
     {
