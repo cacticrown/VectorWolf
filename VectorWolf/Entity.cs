@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using VectorWolf.Components;
 
 namespace VectorWolf;
 
@@ -8,7 +9,7 @@ public class Entity
     public int Id;
     public Scene Scene;
 
-    public List<Component> Components = new List<Component>();
+    public ComponentList Components = new ComponentList();
 
     public Vector2 Position = Vector2.Zero;
     public float Rotation = 0f;
@@ -26,31 +27,46 @@ public class Entity
 
     public void RemoveComponent<T>() where T : Component
     {
-        Components.RemoveAll(c => c is T);
+        Components.Remove<T>();
     }
 
     public virtual void OnSceneStart()
     {
-        Components.ForEach(component => component.OnSceneStart());
+        foreach(var component in Components)
+        {
+            component.OnSceneStart();
+        }
     }
 
     public virtual void OnSceneEnd()
     {
-        Components.ForEach(component => component.OnSceneEnd());
+        foreach (var component in Components)
+        {
+            component.OnSceneEnd();
+        }
     }
 
     public virtual void OnDestroy()
     {
-        Components.ForEach(component => component.OnDestroy());
+        foreach (var component in Components)
+        {
+            component.OnDestroy();
+        }
     }
 
     public virtual void Update()
     {
-        Components.ForEach(component => component.Update());
+        foreach(IUpdate update in Components.UpdateComponents)
+        {
+            update.Update();
+        }
     }
 
     public virtual void Draw()
     {
-        Components.ForEach(component => component.Draw());
+        foreach (IDraw update in Components.DrawComponents)
+        {
+            update.Draw();
+        }
     }
 }
