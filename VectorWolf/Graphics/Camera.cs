@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using VectorWolf;
 
-public class Camera2D : Component
+public class Camera : Component
 {
     public Vector2 Position = Vector2.Zero;
     public float Rotation = 0f;

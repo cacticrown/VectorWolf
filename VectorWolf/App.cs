@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.Utils;
 
@@ -12,13 +13,10 @@ public class App : Game
     public static App Instance;
 
     public GraphicsDeviceManager _graphics;
-    public SpriteBatch _spriteBatch;
 
     public AppConfig AppConfig;
     public string AssetsRootDirectory => AppConfig.AssetsRootDirectory;
     public Scene Scene;
-
-    public Renderer Renderer;
 
     public App(AppConfig appConfig, Scene scene, Renderer renderer)
     {
@@ -28,7 +26,7 @@ public class App : Game
         Scene = scene;
         AppConfig = appConfig;
         Instance = this;
-        Renderer = renderer;
+        RenderContext.ActiveRenderers.Add(renderer);
     }
 
     public void UpdateConfigChanges()
@@ -53,7 +51,7 @@ public class App : Game
 
     protected override void LoadContent()
     {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        RenderContext.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
         Scene.Initialize();
     }
@@ -75,7 +73,7 @@ public class App : Game
     protected override void Draw(GameTime gameTime)
     {
 
-        Renderer.Render(Scene);
+        RenderContext.Draw();
         
 
         base.Draw(gameTime);
