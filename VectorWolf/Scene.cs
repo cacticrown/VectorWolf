@@ -19,7 +19,10 @@ public class Scene
         }
         entity.Scene = this;
         Entities.Add(entity);
-        entity.Components.AddRange(components);
+        foreach(var component in components)
+        {
+            entity.AddComponent(component);
+        }
         return entity;
     }
 
