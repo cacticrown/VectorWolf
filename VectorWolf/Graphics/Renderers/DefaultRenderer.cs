@@ -10,7 +10,7 @@ public class DefaultRenderer : Renderer
     public SamplerState SamplerState = SamplerState.PointClamp;
     public DepthStencilState DepthStencilState = DepthStencilState.None;
     public RasterizerState RasterizerState = RasterizerState.CullNone;
-    public Color BackgroundColor = Color.Black;
+    public Color BackgroundColor = Color.CornflowerBlue;
 
     public override void Render(Scene scene)
     {

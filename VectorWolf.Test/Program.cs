@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using VectorWolf;
+using VectorWolf.Collisions;
 using VectorWolf.Diagnostics;
 using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
@@ -25,6 +27,10 @@ class SampleScene : Scene
     public override void Initialize()
     {
         AddEntity(new SampleEntity());
+        AddEntity(new Coin()
+        {
+            Position = new Vector2(-190, 30)
+        });
         Log.Info("Scene was initialized");
     }
 }
@@ -33,8 +39,10 @@ class SampleEntity : Entity
 {
     private Texture2D _pixel;
 
-    public Rectangle Rect = new Rectangle(0, 0, 100, 100);
+    public Rectangle Rect = new Rectangle(0, 0, 50, 50);
     public Color Color = Color.Black;
+
+    public RectangleCollider Collider = new RectangleCollider();
 
     public const float Speed = 150f;
 
@@ -42,6 +50,9 @@ class SampleEntity : Entity
     {
         _pixel = new Texture2D(RenderContext.GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
+
+        Collider.Size = new Vector2(Rect.Width, Rect.Height);
+        Collider.Entity = this;
     }
 
     public override void Update()
@@ -74,6 +85,45 @@ class SampleEntity : Entity
 
     public override void Draw()
     {
+        RenderContext.SpriteBatch.Draw(_pixel, Rect, Color);
+    }
+}
+class Coin : Entity
+{
+    private Texture2D _pixel;
+
+    public Rectangle Rect = new Rectangle(0, 0, 35, 35);
+    public Color Color = Color.Gold;
+
+    public RectangleCollider Collider = new RectangleCollider();
+
+    public const float Speed = 150f;
+    SampleEntity Player;
+
+    public override void OnSceneStart()
+    {
+        _pixel = new Texture2D(RenderContext.GraphicsDevice, 1, 1);
+        _pixel.SetData(new[] { Color.White });
+        Player = Scene.GetEntity(0) as SampleEntity;
+    }
+
+    public override void Update()
+    {
+        Console.WriteLine("update");
+        Collider.Size = new Vector2(Rect.Width, Rect.Height);
+        Collider.Entity = this;
+
+        if (Player.Collider.CollideWith(Collider))
+        {
+            App.Instance.SwitchScene(new SampleScene());
+        }
+    }
+
+    public override void Draw()
+    {
+        Console.WriteLine("draw");
+        Rect.X = (int)Position.X;
+        Rect.Y = (int)Position.Y;
         RenderContext.SpriteBatch.Draw(_pixel, Rect, Color);
     }
 }

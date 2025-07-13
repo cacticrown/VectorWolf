@@ -31,6 +31,11 @@ public class Entity
         Components.Remove<T>();
     }
 
+    public Component GetComponent<T>() where T : Component
+    {
+        return Components.GetComponent<T>();
+    }
+
     public virtual void OnSceneStart()
     {
         foreach(var component in Components)

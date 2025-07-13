@@ -36,9 +36,6 @@ public class App : Game
         _graphics.PreferredBackBufferHeight = AppConfig.Height;
         _graphics.IsFullScreen = AppConfig.IsFullScreen;
 
-        _graphics.SynchronizeWithVerticalRetrace = AppConfig.EnableVSync;
-        IsFixedTimeStep = AppConfig.EnableVSync;
-
         _graphics.ApplyChanges();
     }
 
@@ -86,9 +83,7 @@ public class App : Game
 
     protected override void Draw(GameTime gameTime)
     {
-
         RenderContext.Draw();
-        
 
         base.Draw(gameTime);
     }
