@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace VectorWolf;
 
@@ -36,16 +37,13 @@ public class Scene
 
     public Entity GetEntity(int id)
     {
-        foreach(var entity in Entities)
-        {
-            if (entity.Id == id)
-            {
-                return entity;
-            }
-        }
-
-        return null;
+        return Entities.FirstOrDefault(e => e.Id == id);
     }
+
+    public T GetEntity<T>() where T : Entity
+    {
+        return Entities.OfType<T>().FirstOrDefault();
+    }    
 
     public void Update()
     {

@@ -103,7 +103,7 @@ class Coin : Entity
     {
         _pixel = new Texture2D(RenderContext.GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
-        Player = Scene.Entities.OfType<SampleEntity>().FirstOrDefault();
+        Player = Scene.GetEntity<SampleEntity>();
     }
 
     public override void Update()
