@@ -15,8 +15,9 @@ public class App : Game
     public GraphicsDeviceManager _graphics;
 
     public AppConfig AppConfig;
-    public string AssetsRootDirectory => AppConfig.AssetsRootDirectory;
+
     public Scene Scene;
+    public Scene NextScene;
 
     public App(AppConfig appConfig, Scene scene, Renderer renderer)
     {
@@ -24,6 +25,7 @@ public class App : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
         Scene = scene;
+        NextScene = Scene;
         AppConfig = appConfig;
         Instance = this;
         RenderContext.ActiveRenderers.Add(renderer);
@@ -41,16 +43,14 @@ public class App : Game
 
     public void SwitchScene(Scene scene)
     {
-        Scene.OnDestroy();
-        Scene = scene;
-        InitScene();
+        NextScene = scene;
     }
 
-    public void InitScene()
+    public void InitScene(Scene scene)
     {
-        Scene.Initialize();
-        Scene.LoadContent();
-        Scene.FinishedInitializing();
+        scene.Initialize();
+        scene.LoadContent();
+        scene.FinishedInitializing();
     }
 
     protected override void Initialize()
@@ -64,13 +64,20 @@ public class App : Game
     {
         RenderContext.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-        InitScene();
+        InitScene(Scene);
     }
 
     protected override void Update(GameTime gameTime)
     {
         Time.Update(gameTime);
         Input.Update();
+
+        if(Scene != NextScene)
+        {
+            Scene.OnDestroy();
+            Scene = NextScene;
+            InitScene(Scene);
+        }
 
         Scene.Update();
 

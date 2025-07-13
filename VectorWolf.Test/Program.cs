@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Linq;
 using VectorWolf;
 using VectorWolf.Collisions;
 using VectorWolf.Diagnostics;
@@ -13,8 +14,6 @@ AppConfig appConfig = new AppConfig
 {
     Title = "VectorWolf Game",
     IsFullScreen = false,
-    EnableVSync = true,
-    AssetsRootDirectory = "Assets"
 };
 
 Log.Info("This is an example for VectorWolf framework");
@@ -44,7 +43,7 @@ class SampleEntity : Entity
 
     public RectangleCollider Collider = new RectangleCollider();
 
-    public const float Speed = 150f;
+    public float Speed = 150f;
 
     public override void OnSceneStart()
     {
@@ -104,16 +103,15 @@ class Coin : Entity
     {
         _pixel = new Texture2D(RenderContext.GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
-        Player = Scene.GetEntity(0) as SampleEntity;
+        Player = Scene.Entities.OfType<SampleEntity>().FirstOrDefault();
     }
 
     public override void Update()
     {
-        Console.WriteLine("update");
         Collider.Size = new Vector2(Rect.Width, Rect.Height);
         Collider.Entity = this;
 
-        if (Player.Collider.CollideWith(Collider))
+        if (Collider.CollideWith(Player.Collider))
         {
             App.Instance.SwitchScene(new SampleScene());
         }
@@ -121,7 +119,6 @@ class Coin : Entity
 
     public override void Draw()
     {
-        Console.WriteLine("draw");
         Rect.X = (int)Position.X;
         Rect.Y = (int)Position.Y;
         RenderContext.SpriteBatch.Draw(_pixel, Rect, Color);

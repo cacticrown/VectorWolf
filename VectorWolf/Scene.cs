@@ -36,7 +36,15 @@ public class Scene
 
     public Entity GetEntity(int id)
     {
-        return Entities[id];
+        foreach(var entity in Entities)
+        {
+            if (entity.Id == id)
+            {
+                return entity;
+            }
+        }
+
+        return null;
     }
 
     public void Update()
