@@ -28,7 +28,7 @@ class SampleScene : Scene
         AddEntity(new SampleEntity());
         AddEntity(new Coin()
         {
-            Position = new Vector2(-190, 30)
+            Position = new Vector2(Randomizer.Randomize(-200, 200), Randomizer.Randomize(-150, 150))
         });
         Log.Info("Scene was initialized");
     }
@@ -113,7 +113,8 @@ class Coin : Entity
 
         if (Collider.CollideWith(Player.Collider))
         {
-            App.Instance.SwitchScene(new SampleScene());
+            while(Collider.CollideWith(Player.Collider))
+                Position = new Vector2(Randomizer.Randomize(-200, 200), Randomizer.Randomize(-150, 150));
         }
     }
 
