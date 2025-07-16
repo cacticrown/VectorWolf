@@ -16,3 +16,8 @@ I wanted a minimal engine without the complexity of larger tools. VectorWolf is 
 
 Clone the repository and add it to your project directly.  
 VectorWolf doesn't have official documentation yet, so you'll need to explore the code to learn how it works.
+
+## VectorWolf.Test
+a very basic "coin" collector game
+
+![alt text](image.png)
