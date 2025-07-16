@@ -1,10 +1,10 @@
 # VectorWolf
 
-**VectorWolf** is a small, lightweight game engine/framework I built primarily for making my own games. It’s simple, quick to set up, and gives you full control.
+**VectorWolf** is a small, lightweight game engine/framework I built primarily for making my own games. It’s simple, modular and gives you full control.
 
 ## Features
 
-- **Scene-Entity-Component system**  
+- **Scene-Entity-Component structure**  
 - **Rendering system** with an API for custom renderers  
 - **Easy to extend** – modular and flexible structure
 
