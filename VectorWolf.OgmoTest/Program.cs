@@ -15,6 +15,10 @@ foreach(var layer in OgmoContext.OgmoLayers)
 {
     Log.Info($"Layer: {layer.Name}, Definition: {layer.Definition}, Grid Size: {layer.GridSize}");
 }
+foreach(var tileset in OgmoContext.TileSets)
+{
+    Log.Info($"Tileset: {tileset.Name}, Texture Path: {tileset.TexturePath}");
+}
 
 using var game = new App(appConfig, new SampleScene(), new DefaultRenderer());
 game.Run();

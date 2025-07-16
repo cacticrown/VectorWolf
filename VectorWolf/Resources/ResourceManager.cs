@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using VectorWolf.Graphics;
 using VectorWolf.OgmoEditor;
+using VectorWolf.TileMaps;
 
 namespace VectorWolf.Resources;
 
@@ -31,5 +32,11 @@ public static class ResourceManager
     {
         string json = File.ReadAllText(path);
         return OgmoImporter.LoadSceneFromJson(json);
+    }
+
+    public static TileSet LoadOgmoTileset(string path)
+    {
+        string json = File.ReadAllText(path);
+        return OgmoImporter.LoadTilesetFromJson(json);
     }
 }

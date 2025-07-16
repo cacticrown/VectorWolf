@@ -12,7 +12,7 @@ public class TileMap : Entity
     public int Height;
     public int TileWidth;
     public int TileHeight;
-    public Texture2D TileSetTexture;
+    public TileSet TileSet;
     public string TileSetTexturePath;
 
     public TileMap(int width, int height, int tileWidth, int tileHeight)
@@ -26,12 +26,12 @@ public class TileMap : Entity
 
     public override void LoadContent()
     {
-        TileSetTexture = ResourceManager.LoadTexture(TileSetTexturePath);
+        TileSet = ResourceManager.LoadOgmoTileset(TileSetTexturePath);
     }
 
     public Rectangle GetSourceRectangle(int tile)
     {
-        int tilesPerRow = TileSetTexture.Width / TileWidth;
+        int tilesPerRow = TileSet.Texture.Width / TileWidth;
 
         int tileX = tile % tilesPerRow;
         int tileY = tile / tilesPerRow;
