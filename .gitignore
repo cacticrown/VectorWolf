@@ -397,12 +397,18 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # VS Code files for those working on multiple tools
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+# .vscode/*
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
+# !.vscode/*.code-snippets
+
+# Ignore all .vscode folders
+**/.vscode/
+# Ignore all .config files, these include dotnet-tools.json
+**/.vscode/
+
 
 # Local History for Visual Studio Code
 .history/
