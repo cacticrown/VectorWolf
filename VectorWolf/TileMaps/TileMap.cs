@@ -15,18 +15,14 @@ public class TileMap : Entity
     public TileSet TileSet;
     public string TileSetTexturePath;
 
-    public TileMap(int width, int height, int tileWidth, int tileHeight)
+    public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet)
     {
+        TileSet = tileSet;
         Width = width;
         Height = height;
         Tiles = new int[width * height];
         TileWidth = tileWidth;
         TileHeight = tileHeight;
-    }
-
-    public override void LoadContent()
-    {
-        TileSet = ResourceManager.LoadOgmoTileset(TileSetTexturePath);
     }
 
     public Rectangle GetSourceRectangle(int tile)

@@ -33,10 +33,4 @@ public static class ResourceManager
         string json = File.ReadAllText(path);
         return OgmoImporter.LoadSceneFromJson(json);
     }
-
-    public static TileSet LoadOgmoTileset(string path)
-    {
-        string json = File.ReadAllText(path);
-        return OgmoImporter.LoadTilesetFromJson(json);
-    }
 }
