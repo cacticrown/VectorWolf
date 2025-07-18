@@ -1,6 +1,6 @@
 # VectorWolf
 
-**VectorWolf** is a small, lightweight game engine/framework I built primarily for making my own games. It’s simple, modular and gives you full control.
+**VectorWolf** is a small, lightweight game engine/framework I built primarily for making my own games. It's simple, modular and gives you full control.
 
 ## Features
 
@@ -15,7 +15,7 @@ I wanted a minimal engine without the complexity of larger tools. VectorWolf is 
 ## Getting Started
 
 Clone the repository and add it to your project directly.  
-VectorWolf doesn't have official documentation yet, so you'll need to explore the code to learn how it works.
+VectorWolf doesn't have any official documentation yet, but you can take look at the VectorWolf.Test project and at the source of VectorWolf itself. If I create any more examples i will link them here.
 
 ## VectorWolf.Test
 a very basic "coin" collector game
