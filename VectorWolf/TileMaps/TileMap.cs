@@ -15,7 +15,7 @@ public class TileMap : Entity
     public TileSet TileSet;
     public string TileSetTexturePath;
 
-    public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet)
+    public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet, int[] tiles)
     {
         TileSet = tileSet;
         Width = width;
@@ -23,6 +23,7 @@ public class TileMap : Entity
         Tiles = new int[width * height];
         TileWidth = tileWidth;
         TileHeight = tileHeight;
+        Tiles = tiles;
     }
 
     public Rectangle GetSourceRectangle(int tile)

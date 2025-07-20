@@ -3,6 +3,7 @@ using VectorWolf.Diagnostics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.OgmoEditor;
 using VectorWolf.Resources;
+using VectorWolf.TileMaps;
 
 AppConfig appConfig = new AppConfig
 {
@@ -20,13 +21,9 @@ foreach(var tileset in OgmoContext.TileSets)
     Log.Info($"Tileset: {tileset.Name}, Texture Path: {tileset.TexturePath}");
 }
 
-using var game = new App(appConfig, new SampleScene(), new DefaultRenderer());
+using var game = new App(appConfig, ResourceManager.LoadOgmoScene("Assets/Level2.json"), new DefaultRenderer());
+foreach(var entity in game.Scene.Entities)
+    Log.Info($"{entity.Id} {entity.Position}");
+var tilemap = game.Scene.GetEntity<TileMap>();
+    Log.Info(tilemap.TileSet.ToString());
 game.Run();
-
-class SampleScene : Scene
-{
-    public override void Initialize()
-    {
-        
-    }
-}
