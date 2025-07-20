@@ -13,6 +13,7 @@ AppConfig appConfig = new AppConfig
 };
 
 OgmoContext.Initialize(ResourceManager.LoadText("Assets/TileMaps.ogmo"));
+
 Log.Info($"Ogmo Version: {OgmoContext.OgmoVersion}");
 foreach(var layer in OgmoContext.OgmoLayers)
 {
@@ -23,8 +24,10 @@ foreach(var tileset in OgmoContext.TileSets)
     Log.Info($"Tileset: {tileset.Name}, Texture Path: {tileset.TexturePath}");
 }
 
+EntityRegistry.Register<Entity>("Player");
 using var game = new App(appConfig, ResourceManager.LoadOgmoScene("Assets/Level2.json"), new DefaultRenderer());
 foreach(var entity in game.Scene.Entities)
+
     Log.Info($"{entity.Id} {entity.Position}");
 var tilemap = game.Scene.GetEntity<TileMap>();
     Log.Info(tilemap.TileSet.ToString());

@@ -64,7 +64,7 @@ public static class OgmoImporter
 
         foreach(var Entity in layer.GetProperty("entities").EnumerateArray())
         {
-            Entity entity = new Entity();
+            Entity entity = EntityRegistry.Create(Entity.GetProperty("name").GetString());
             entity.Position = new Vector2(
                 Entity.GetProperty("x").GetSingle(),
                 Entity.GetProperty("y").GetSingle()
