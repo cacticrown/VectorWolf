@@ -103,7 +103,7 @@ public static class OgmoImporter
             .Select(x => x.GetInt32())
             .ToArray();
 
-        TileMap tileMap = new TileMap(width, height, tileWidth, tileHeight, selectedTileSet, data);
+        TileMap tileMap = new TileMap(width, height, tileWidth, tileHeight, selectedTileSet, data, layer.GetProperty("name").GetString() == "CollisionTiles");
         return tileMap;
     }
 }

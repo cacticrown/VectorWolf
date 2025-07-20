@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using VectorWolf.Collisions;
 using VectorWolf.Diagnostics;
 using VectorWolf.Graphics;
 using VectorWolf.Resources;
@@ -16,6 +17,7 @@ public class TileMap : Entity
     public int TileHeight;
     public TileSet TileSet;
     public string TileSetTexturePath;
+    public GridCollider GridCollider;
 
     public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet, int[] tiles)
     {
@@ -25,6 +27,26 @@ public class TileMap : Entity
         TileWidth = tileWidth;
         TileHeight = tileHeight;
         Tiles = tiles;
+        GridCollider = new GridCollider(width, height, tileWidth); // GridColliders only support square tiles
+    }    
+    
+    public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet, int[] tiles, bool isSolid)
+    {
+        TileSet = tileSet;
+        Width = width;
+        Height = height;
+        TileWidth = tileWidth;
+        TileHeight = tileHeight;
+        Tiles = tiles;
+        GridCollider = new GridCollider(width, height, tileWidth);
+        if (isSolid)
+        {
+            for (int i = 0; i < tiles.Length; i++)
+            {
+                if (tiles[i] != -1)
+                    GridCollider.Set(i % width, i / width, true);
+            }
+        }
     }
 
     public Rectangle GetSourceRectangle(int tile)
