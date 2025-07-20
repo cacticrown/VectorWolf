@@ -19,9 +19,6 @@ public static class OgmoImporter
         if (jsonDocument.RootElement.GetProperty("ogmoVersion").GetString() != OgmoContext.OgmoVersion)
             Log.Warning("Loaded Level does not match the ogmo version in omgo context");
 
-        int width = jsonDocument.RootElement.GetProperty("width").GetInt32();
-        int height = jsonDocument.RootElement.GetProperty("height").GetInt32();
-
         List<TileMap> tilemaps = new List<TileMap>();
 
         foreach (var layer in jsonDocument.RootElement.GetProperty("layers").EnumerateArray())
@@ -45,7 +42,7 @@ public static class OgmoImporter
                     }
                     break;
                 case "tile":
-                    tilemaps.Add(LoadTileLayer(layer, width, height));
+                    tilemaps.Add(LoadTileLayer(layer));
                     break;
                 default:
                     Log.Error($"Unknown layer definition: {layer.GetProperty("definition").GetString()}");
@@ -84,8 +81,11 @@ public static class OgmoImporter
         return entities;
     }
 
-    public static TileMap LoadTileLayer(JsonElement layer, int width, int height)
+    public static TileMap LoadTileLayer(JsonElement layer)
     {
+        int width = layer.GetProperty("gridCellsX").GetInt32();
+        int height = layer.GetProperty("gridCellsY").GetInt32();
+
         int tileWidth = layer.GetProperty("gridCellWidth").GetInt32();
         int tileHeight = layer.GetProperty("gridCellHeight").GetInt32();
 

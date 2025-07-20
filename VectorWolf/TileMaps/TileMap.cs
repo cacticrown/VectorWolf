@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using VectorWolf.Diagnostics;
+using VectorWolf.Graphics;
 using VectorWolf.Resources;
 
 namespace VectorWolf.TileMaps;
@@ -20,10 +22,11 @@ public class TileMap : Entity
         TileSet = tileSet;
         Width = width;
         Height = height;
-        Tiles = new int[width * height];
         TileWidth = tileWidth;
         TileHeight = tileHeight;
         Tiles = tiles;
+
+        Log.Debug($"{Width * Height}   {Tiles.Length}");
     }
 
     public Rectangle GetSourceRectangle(int tile)
@@ -41,6 +44,24 @@ public class TileMap : Entity
     {
         if (x < 0 || x >= Width || y < 0 || y >= Height)
             return -1;
+
         return Tiles[y * Width + x];
+    }
+
+    public override void Draw()
+    {
+        for (int y = 0; y < Height; y++)
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                int tileIndex = GetTile(x, y);
+                if (tileIndex < 0) continue;
+
+                Rectangle sourceRect = GetSourceRectangle(tileIndex);
+                Vector2 position = new Vector2(x * TileWidth, y * TileHeight);
+
+                RenderContext.SpriteBatch.Draw(TileSet.Texture, position, sourceRect, Color.White);
+            }
+        }
     }
 }

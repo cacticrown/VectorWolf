@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using VectorWolf.Resources;
 
 namespace VectorWolf.TileMaps;
 
@@ -22,5 +23,10 @@ public class TileSet
         TileHeight = tileHeight;
         TileSeperationX = tileSeperationX;
         TileSeperationY = tileSeperationY;
+    }
+
+    public void LoadContent()
+    {
+        Texture = ResourceManager.LoadTexture(TexturePath);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using VectorWolf.TileMaps;
 
@@ -57,7 +58,7 @@ public static class OgmoContext
         foreach (JsonElement tilesetElement in tilesetsElement.EnumerateArray())
         {
             string name = tilesetElement.GetProperty("label").GetString();
-            string texturePath = tilesetElement.GetProperty("path").GetString();
+            string texturePath = Path.Combine("Assets", tilesetElement.GetProperty("path").GetString());
             int tileWidth = tilesetElement.GetProperty("tileWidth").GetInt32();
             int tileHeight = tilesetElement.GetProperty("tileHeight").GetInt32();
             int tileSeperationX = tilesetElement.GetProperty("tileSeparationX").GetInt32();

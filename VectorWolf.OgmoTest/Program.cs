@@ -1,5 +1,7 @@
-﻿using VectorWolf;
+﻿using Microsoft.Xna.Framework;
+using VectorWolf;
 using VectorWolf.Diagnostics;
+using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.OgmoEditor;
 using VectorWolf.Resources;
@@ -26,4 +28,7 @@ foreach(var entity in game.Scene.Entities)
     Log.Info($"{entity.Id} {entity.Position}");
 var tilemap = game.Scene.GetEntity<TileMap>();
     Log.Info(tilemap.TileSet.ToString());
+
+RenderContext.ActiveCamera.Position = new Vector2(100, 100);
+
 game.Run();
