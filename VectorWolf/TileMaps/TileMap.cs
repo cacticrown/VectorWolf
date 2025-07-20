@@ -25,8 +25,6 @@ public class TileMap : Entity
         TileWidth = tileWidth;
         TileHeight = tileHeight;
         Tiles = tiles;
-
-        Log.Debug($"{Width * Height}   {Tiles.Length}");
     }
 
     public Rectangle GetSourceRectangle(int tile)
