@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorWolf", "VectorWolf\Ve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorWolf.Test", "VectorWolf.Test\VectorWolf.Test.csproj", "{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorWolf.OgmoTest", "VectorWolf.OgmoTest\VectorWolf.OgmoTest.csproj", "{D0E3B6DE-32F8-4DC4-A19B-0D1D15770B65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C06A2B6E-4AC6-4BDF-8AEB-EFCECD75F4D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E3B6DE-32F8-4DC4-A19B-0D1D15770B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E3B6DE-32F8-4DC4-A19B-0D1D15770B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E3B6DE-32F8-4DC4-A19B-0D1D15770B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E3B6DE-32F8-4DC4-A19B-0D1D15770B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

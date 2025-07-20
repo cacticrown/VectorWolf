@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
+using VectorWolf.OgmoEditor;
+using VectorWolf.TileMaps;
 using VectorWolf.Utils;
 
 namespace VectorWolf;
@@ -63,6 +65,11 @@ public class App : Game
     protected override void LoadContent()
     {
         RenderContext.SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+        foreach(TileSet tileset in OgmoContext.TileSets)
+        {
+            tileset.LoadContent();
+        }
 
         InitScene(Scene);
     }

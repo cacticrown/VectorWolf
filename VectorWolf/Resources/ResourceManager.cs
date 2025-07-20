@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using VectorWolf.Graphics;
+using VectorWolf.OgmoEditor;
+using VectorWolf.TileMaps;
 
 namespace VectorWolf.Resources;
 
@@ -19,5 +21,16 @@ public static class ResourceManager
 
         Textures.Add(path, texture);
         return texture;
+    }
+
+    public static string LoadText(string path)
+    {
+        return File.ReadAllText(path);
+    }
+
+    public static Scene LoadOgmoScene(string path)
+    {
+        string json = File.ReadAllText(path);
+        return OgmoImporter.LoadSceneFromJson(json);
     }
 }
