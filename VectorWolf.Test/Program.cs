@@ -10,7 +10,7 @@ using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.Utils;
 
-AppConfig appConfig = new AppConfig
+App app = new App(new SampleScene(), new DefaultRenderer())
 {
     Title = "VectorWolf Game",
     IsFullScreen = false,
@@ -18,8 +18,7 @@ AppConfig appConfig = new AppConfig
 
 Log.Info("This is an example for VectorWolf framework");
 Log.Info("Move with WASD and reload the scene by pressing R");
-using var game = new App(appConfig, new SampleScene(), new DefaultRenderer());
-game.Run();
+app.Run();
 
 class SampleScene : Scene
 {
@@ -75,7 +74,7 @@ class SampleEntity : Entity
 
         if (Input.KeyPressed(Keys.R))
         {
-            App.Instance.SwitchScene(new SampleScene());
+            Engine.Instance.SwitchScene(new SampleScene());
         }
 
         Rect.X = (int)Position.X;

@@ -10,7 +10,7 @@ public static class OgmoContext
 {
     public static string OgmoVersion;
     public static List<OgmoLayer> OgmoLayers;
-    public static List<TileSet> TileSets;
+    public static List<TileSet> TileSets = new();
 
     public static void Initialize(string json)
     {

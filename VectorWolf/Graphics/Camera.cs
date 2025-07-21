@@ -9,8 +9,8 @@ public class Camera : Component
     public float Zoom = 1f;
     public bool FollowEntity = false;
 
-    public int ViewportWidth => App.Instance.GraphicsDevice.Viewport.Width;
-    public int ViewportHeight => App.Instance.GraphicsDevice.Viewport.Height;
+    public int ViewportWidth => Engine.Instance.GraphicsDevice.Viewport.Width;
+    public int ViewportHeight => Engine.Instance.GraphicsDevice.Viewport.Height;
 
     public Matrix GetViewMatrix()
     {
