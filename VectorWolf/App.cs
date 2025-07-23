@@ -13,9 +13,8 @@ public class App
     public int Height { get; set; } = 480;
     public bool IsFullScreen { get; set; } = false;
 
-    public App(Scene scene, Renderer renderer)
+    public App()
     {
-        Engine = new Engine(this, scene, renderer);
         Instance = this;
     }
 
@@ -26,6 +25,11 @@ public class App
     public void ApplyChanges() => Engine.UpdateConfigChanges();
 
     public virtual void Initialize() { }
+
+    public void InitEngine(Scene scene, Renderer renderer)
+    {
+        Engine = new Engine(this, Scene, renderer);
+    }
     public virtual void LoadContent() { }
     public virtual void Update() { }
     public virtual void Draw() { }
