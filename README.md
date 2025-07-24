@@ -23,3 +23,8 @@ Simply add the NuGet package to your `.csproj` like this:
 <PackageReference Include="VectorWolf" Version="0.1.0" />
 ```
 VectorWolf doesn't have any official documentation yet, so you'll need to look at the source.
+
+## VectorWolf.Test
+a very basic "coin" collector game
+
+![alt text](image.png)
