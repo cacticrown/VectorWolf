@@ -9,11 +9,13 @@ namespace VectorWolf.Resources;
 
 public static class ResourceManager
 {
+    public static string ContentRoot = "Content";
+
     public static Dictionary<string, Texture2D> Textures { get; } = new Dictionary<string, Texture2D>();
 
     public static Texture2D LoadTexture(string path)
     {
-        if(Textures.TryGetValue(path, out var texture))
+        if(Textures.TryGetValue(Path.Combine(ContentRoot, path), out var texture))
             return texture;
 
         Stream stream = File.OpenRead(path);
@@ -25,12 +27,12 @@ public static class ResourceManager
 
     public static string LoadText(string path)
     {
-        return File.ReadAllText(path);
+        return File.ReadAllText(Path.Combine(ContentRoot, path));
     }
 
     public static Scene LoadOgmoScene(string path)
     {
-        string json = File.ReadAllText(path);
+        string json = File.ReadAllText(Path.Combine(ContentRoot, path));
         return OgmoImporter.LoadSceneFromJson(json);
     }
 }
