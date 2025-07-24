@@ -10,15 +10,21 @@ using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.Utils;
 
-App app = new App(new SampleScene(), new DefaultRenderer())
-{
-    Title = "VectorWolf Game",
-    IsFullScreen = false,
-};
-
+TestApp app = new TestApp();
 Log.Info("This is an example for VectorWolf framework");
 Log.Info("Move with WASD and reload the scene by pressing R");
 app.Run();
+
+class TestApp : App
+{
+    public override void Run()
+    {
+        Title = "VectorWolf Game";
+        IsFullScreen = false;
+        InitEngine(new SampleScene(), new DefaultRenderer());
+        base.Run();
+    }
+}
 
 class SampleScene : Scene
 {

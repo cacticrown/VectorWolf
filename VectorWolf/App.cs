@@ -21,14 +21,14 @@ public class App
     public Scene Scene => Engine.Scene;
     public void SwitchScene(Scene scene) => Engine.SwitchScene(scene);
 
-    public void Run() => Engine.Run();
+    public virtual void Run() => Engine.Run();
     public void ApplyChanges() => Engine.UpdateConfigChanges();
 
     public virtual void Initialize() { }
 
     public void InitEngine(Scene scene, Renderer renderer)
     {
-        Engine = new Engine(this, Scene, renderer);
+        Engine = new Engine(this, scene, renderer);
     }
     public virtual void LoadContent() { }
     public virtual void Update() { }
