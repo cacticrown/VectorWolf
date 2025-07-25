@@ -15,7 +15,8 @@ public static class ResourceManager
 
     public static Texture2D LoadTexture(string path)
     {
-        if(Textures.TryGetValue(Path.Combine(ContentRoot, path), out var texture))
+        path = Path.Combine(ContentRoot, path);
+        if (Textures.TryGetValue(path, out var texture))
             return texture;
 
         Stream stream = File.OpenRead(path);
