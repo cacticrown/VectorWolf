@@ -68,12 +68,21 @@ public static class OgmoImporter
             entity.Position = new Vector2(
                 Entity.GetProperty("x").GetSingle(),
                 Entity.GetProperty("y").GetSingle()
-            ); 
-            entity.Scale = new Vector2(
-                Entity.GetProperty("width").GetSingle(),
-                Entity.GetProperty("height").GetSingle()
             );
-            entity.Rotation = Entity.GetProperty("rotation").GetSingle();
+
+            Vector2 scale = Vector2.One;
+            if (Entity.TryGetProperty("width", out var width) && Entity.TryGetProperty("height", out var height))
+            {
+                scale.X = width.GetSingle();
+                scale.Y = height.GetSingle();
+                entity.Scale = scale;
+            }
+
+            if (Entity.TryGetProperty("rotation", out var rotation))
+            {
+                entity.Rotation = rotation.GetSingle();
+            }
+
             entity.Id = Entity.GetProperty("id").GetInt32();
             entities.Add(entity);
         }
