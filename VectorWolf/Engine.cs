@@ -72,6 +72,10 @@ public class Engine : Game
         }
 
         App.LoadContent();
+        foreach(Renderer renderer in RenderContext.ActiveRenderers)
+        {
+            renderer.Initialize();
+        }
         InitScene(Scene);
     }
 
