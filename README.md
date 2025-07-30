@@ -28,4 +28,4 @@ VectorWolf doesn't have any official documentation yet, so you'll need to look a
 ## VectorWolf.Test
 a very basic "coin" collector game
 
-![alt text](image.png)
+![alt text](Resources/ScreenshotTestProject2.png)
