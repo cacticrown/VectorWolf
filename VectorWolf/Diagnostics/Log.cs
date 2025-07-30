@@ -1,9 +1,12 @@
 ﻿using System;
+using VectorWolf.ImGuiNet;
 
 namespace VectorWolf.Diagnostics;
 
 public static class Log
 {
+    public static ImGuiConsole ImGuiConsole;
+
     public static void Debug(string message) => PrintMessage(message, "DEBUG", ConsoleColor.White);
     public static void Info(string message) => PrintMessage(message, "INFO", ConsoleColor.Gray);
     public static void Warning(string message) => PrintMessage(message, "WARNING", ConsoleColor.Yellow);
@@ -15,5 +18,10 @@ public static class Log
         Console.ForegroundColor = consoleColor;
         Console.WriteLine($"[{type}] {message}");
         Console.ResetColor();
+
+        if (ImGuiConsole != null)
+        {
+            ImGuiConsole.AddLine($"[{type}] {message}", consoleColor);
+        }
     }
 }

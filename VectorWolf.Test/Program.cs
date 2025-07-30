@@ -12,7 +12,4 @@ using VectorWolf.Utils;
 using VectorWolf.Test;
 
 TestApp app = new TestApp();
-Log.Info("This is an example for VectorWolf framework");
-Log.Info("Move with WASD and reload the scene by pressing R");
-Log.Info("Toggle Debug Collider Rendering by pressing C");
 app.Run();

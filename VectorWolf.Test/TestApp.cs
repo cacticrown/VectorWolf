@@ -3,8 +3,10 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using VectorWolf.Diagnostics;
 using VectorWolf.Graphics;
 using VectorWolf.Graphics.Renderers;
 using VectorWolf.ImGuiNet;
@@ -13,6 +15,8 @@ namespace VectorWolf.Test;
 
 public class TestApp : App
 {
+    ImGuiConsole imguiConsole = new();
+
     public override void Run()
     {
         Title = "VectorWolf Game";
@@ -24,6 +28,11 @@ public class TestApp : App
     public override void Initialize()
     {
         ImGuiContext.Initialize();
+        Log.ImGuiConsole = imguiConsole;
+
+        Log.Info("This is an example for VectorWolf framework");
+        Log.Info("Move with WASD and reload the scene by pressing R");
+        Log.Info("Toggle Debug Collider Rendering by pressing C");
     }
 
     public override void LoadContent()
@@ -61,6 +70,8 @@ public class TestApp : App
 
             ImGui.End();
         }
+
+        imguiConsole.Draw();
 
         ImGuiContext.End();
     }
