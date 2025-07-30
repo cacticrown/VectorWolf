@@ -2,7 +2,7 @@
 
 public class Collider : Component
 {
-    public virtual void DebugDraw()
+    public virtual void DebugDraw(int lineThickness = 2)
     {
 
     }

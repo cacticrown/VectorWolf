@@ -63,7 +63,7 @@ namespace VectorWolf.Collisions
             return x >= 0 && y >= 0 && x < Width && y < Height;
         }
 
-        public override void DebugDraw()
+        public override void DebugDraw(int lineThickness = 2)
         {
             for (int y = 0; y < Height; y++)
             {
@@ -73,22 +73,29 @@ namespace VectorWolf.Collisions
 
                     if (CollisionGrid[x, y])
                     {
-                        DrawRectangleOutline(rect, Color.Red * 1);
+                        DrawRectangleOutline(rect, Color.Red, lineThickness);
                     }
                 }
             }
         }
 
-        private void DrawRectangleOutline(Rectangle rect, Color color)
+        private void DrawRectangleOutline(Rectangle rect, Color color, int lineThickness)
         {
             // Top
-            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Left, rect.Top, rect.Width, 1), color);
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel,
+                new Rectangle(rect.Left, rect.Top, rect.Width, lineThickness), color);
+
             // Bottom
-            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Left, rect.Bottom - 1, rect.Width, 1), color);
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel,
+                new Rectangle(rect.Left, rect.Bottom - lineThickness, rect.Width, lineThickness), color);
+
             // Left
-            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Left, rect.Top, 1, rect.Height), color);
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel,
+                new Rectangle(rect.Left, rect.Top, lineThickness, rect.Height), color);
+
             // Right
-            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Right - 1, rect.Top, 1, rect.Height), color);
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel,
+                new Rectangle(rect.Right - lineThickness, rect.Top, lineThickness, rect.Height), color);
         }
 
     }
