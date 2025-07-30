@@ -9,6 +9,7 @@
 - **Rendering system** with an API for custom renderers  
 - **Easy to extend** – modular and flexible structure
 - **Ogmo Editor support** - import Ogmo Tilemaps and Scenes
+- **ImGui integration**
 
 ## Why?
 
