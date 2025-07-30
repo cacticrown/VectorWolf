@@ -17,18 +17,7 @@ public class TileMap : Entity
     public int TileHeight;
     public TileSet TileSet;
     public string TileSetTexturePath;
-    public GridCollider GridCollider;
-
-    public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet, int[] tiles)
-    {
-        TileSet = tileSet;
-        Width = width;
-        Height = height;
-        TileWidth = tileWidth;
-        TileHeight = tileHeight;
-        Tiles = tiles;
-        GridCollider = new GridCollider(width, height, tileWidth); // GridColliders only support square tiles
-    }    
+    public GridCollider GridCollider; 
     
     public TileMap(int width, int height, int tileWidth, int tileHeight, TileSet tileSet, int[] tiles, bool isSolid)
     {
@@ -38,7 +27,8 @@ public class TileMap : Entity
         TileWidth = tileWidth;
         TileHeight = tileHeight;
         Tiles = tiles;
-        GridCollider = new GridCollider(width, height, tileWidth);
+        GridCollider = new GridCollider(width, height, tileWidth); // GridColliders only support square tiles
+        AddComponent(GridCollider);
         if (isSolid)
         {
             for (int i = 0; i < tiles.Length; i++)

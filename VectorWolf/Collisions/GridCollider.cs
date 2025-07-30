@@ -5,7 +5,7 @@ using VectorWolf.Graphics;
 
 namespace VectorWolf.Collisions
 {
-    public class GridCollider : Component
+    public class GridCollider : Collider
     {
         public int CellSize { get; set; }
         public bool[,] CollisionGrid { get; private set; }
@@ -58,10 +58,38 @@ namespace VectorWolf.Collisions
             return false;
         }
 
-
         private bool InBounds(int x, int y)
         {
             return x >= 0 && y >= 0 && x < Width && y < Height;
         }
+
+        public override void DebugDraw()
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    var rect = new Rectangle(x * CellSize, y * CellSize, CellSize, CellSize);
+
+                    if (CollisionGrid[x, y])
+                    {
+                        DrawRectangleOutline(rect, Color.Red * 1);
+                    }
+                }
+            }
+        }
+
+        private void DrawRectangleOutline(Rectangle rect, Color color)
+        {
+            // Top
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Left, rect.Top, rect.Width, 1), color);
+            // Bottom
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Left, rect.Bottom - 1, rect.Width, 1), color);
+            // Left
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Left, rect.Top, 1, rect.Height), color);
+            // Right
+            RenderContext.SpriteBatch.Draw(RenderContext.Pixel, new Rectangle(rect.Right - 1, rect.Top, 1, rect.Height), color);
+        }
+
     }
 }
