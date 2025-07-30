@@ -57,6 +57,7 @@ public class Engine : Game
 
     protected override void Initialize()
     {
+        RenderContext.Initialize();
         App.Initialize();
         UpdateConfigChanges();
         base.Initialize();

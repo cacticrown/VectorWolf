@@ -13,6 +13,7 @@ using VectorWolf.Utils;
 TestApp app = new TestApp();
 Log.Info("This is an example for VectorWolf framework");
 Log.Info("Move with WASD and reload the scene by pressing R");
+Log.Info("Toggle Debug Collider Rendering by pressing C");
 app.Run();
 
 class TestApp : App
@@ -56,7 +57,7 @@ class SampleEntity : Entity
         _pixel.SetData(new[] { Color.White });
 
         Collider.Size = new Vector2(Rect.Width, Rect.Height);
-        Collider.Entity = this;
+        AddComponent(Collider);
     }
 
     public override void Update()
@@ -81,6 +82,11 @@ class SampleEntity : Entity
         if (Input.KeyPressed(Keys.R))
         {
             Engine.Instance.SwitchScene(new SampleScene());
+        }
+
+        if (Input.KeyPressed(Keys.C))
+        {
+            RenderContext.ActiveRenderers.OfType<DefaultRenderer>().FirstOrDefault<DefaultRenderer>().DrawDebugColliders = !RenderContext.ActiveRenderers.OfType<DefaultRenderer>().FirstOrDefault<DefaultRenderer>().DrawDebugColliders;
         }
 
         Rect.X = (int)Position.X;
@@ -109,6 +115,8 @@ class Coin : Entity
         _pixel = new Texture2D(RenderContext.GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
         Player = Scene.GetEntity<SampleEntity>();
+
+        AddComponent(Collider);
     }
 
     public override void Update()

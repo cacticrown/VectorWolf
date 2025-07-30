@@ -14,6 +14,15 @@ public static class RenderContext
     public static List<Renderer> ActiveRenderers = new List<Renderer>();
     public static Camera ActiveCamera = new Camera();
 
+    // used for debug rendering
+    public static Texture2D Pixel;
+
+    public static void Initialize()
+    {
+        Pixel = new Texture2D(GraphicsDevice, 1, 1);
+        Pixel.SetData(new[] { Color.White });
+    }
+
     public static void Draw()
     {
         foreach(Renderer renderer in ActiveRenderers)

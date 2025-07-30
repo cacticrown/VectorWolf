@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using VectorWolf.Collisions;
 
 namespace VectorWolf.Graphics.Renderers;
 
@@ -11,6 +12,8 @@ public class DefaultRenderer : Renderer
     public DepthStencilState DepthStencilState = DepthStencilState.None;
     public RasterizerState RasterizerState = RasterizerState.CullNone;
     public Color BackgroundColor = Color.CornflowerBlue;
+
+    public bool DrawDebugColliders = false;
 
     public override void Render(Scene scene)
     {
@@ -26,6 +29,18 @@ public class DefaultRenderer : Renderer
         );
 
         scene.Draw();
+
+        if(DrawDebugColliders)
+        {
+            foreach (var entity in App.Instance.Scene.Entities)
+            {
+                if (entity.GetComponent<RectangleCollider>() != null)
+                {
+                    var collider = entity.GetComponent<RectangleCollider>() as RectangleCollider;
+                    collider.DebugDraw();
+                }
+            }
+        }
 
         RenderContext.SpriteBatch.End();
     }
