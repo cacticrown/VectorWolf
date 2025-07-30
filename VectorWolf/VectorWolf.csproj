@@ -7,9 +7,11 @@
     <Description>A lightweight, cross-platform 2D game framework based on MonoGame.</Description>
     <RepositoryUrl>https://github.com/cacticrown/VectorWolf</RepositoryUrl>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-	  <PackageReference Include="MonoGame.Framework.Native" Version="3.8.*" >
+	  <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
+	  <PackageReference Include="MonoGame.Framework.Native" Version="3.8.*">
 		  <PrivateAssets>All</PrivateAssets>
 	  </PackageReference>
   </ItemGroup>
