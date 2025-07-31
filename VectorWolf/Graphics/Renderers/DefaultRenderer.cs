@@ -25,7 +25,7 @@ public class DefaultRenderer : Renderer
             SamplerState,
             DepthStencilState,
             RasterizerState,
-            transformMatrix: RenderContext.ActiveCamera.GetViewMatrix()
+            transformMatrix: RenderContext.Camera.GetViewMatrix()
         );
 
         scene.Draw();

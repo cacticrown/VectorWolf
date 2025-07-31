@@ -11,6 +11,7 @@ public static class ImGuiContext
     public static void Initialize()
     {
         _renderer = new ImGuiRenderer(Engine.Instance);
+        RebuildFontAtlas();
     }
 
     public static void Begin()

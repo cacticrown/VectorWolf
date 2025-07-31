@@ -1,5 +1,4 @@
 ﻿using VectorWolf.Graphics.Renderers;
-using VectorWolf.OgmoEditor;
 
 namespace VectorWolf;
 
@@ -8,28 +7,19 @@ public class App
     public static App Instance;
 
     public Engine Engine;
-    public string Title { get; set; } = "VectorWolf Game";
-    public int Width { get; set; } = 800;
-    public int Height { get; set; } = 480;
-    public bool IsFullScreen { get; set; } = false;
 
     public App()
     {
         Instance = this;
+        Engine = new Engine(this);
     }
 
     public Scene Scene => Engine.Scene;
     public void SwitchScene(Scene scene) => Engine.SwitchScene(scene);
 
-    public virtual void Run() => Engine.Run();
-    public void ApplyChanges() => Engine.UpdateConfigChanges();
+    public void Run() => Engine.Run();
 
     public virtual void Initialize() { }
-
-    public void InitEngine(Scene scene, Renderer renderer)
-    {
-        Engine = new Engine(this, scene, renderer);
-    }
     public virtual void LoadContent() { }
     public virtual void Update() { }
     public virtual void Draw() { }

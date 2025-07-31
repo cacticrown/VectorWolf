@@ -17,16 +17,17 @@ public class TestApp : App
 {
     ImGuiConsole imguiConsole = new();
 
-    public override void Run()
-    {
-        Title = "VectorWolf Game";
-        IsFullScreen = false;
-        InitEngine(new SampleScene(), new DefaultRenderer());
-        base.Run();
-    }
-
     public override void Initialize()
     {
+        SwitchScene(new SampleScene());
+        RenderContext.Renderers.Add(new DefaultRenderer()
+        {
+            BackgroundColor = Microsoft.Xna.Framework.Color.CornflowerBlue,
+            DrawDebugColliders = false
+        });
+
+        Engine.IsMouseVisible = true;
+
         ImGuiContext.Initialize();
         Log.ImGuiConsole = imguiConsole;
 
@@ -37,7 +38,7 @@ public class TestApp : App
 
     public override void LoadContent()
     {
-        ImGuiContext.RebuildFontAtlas();
+
     }
 
     public override void Draw()
@@ -61,7 +62,7 @@ public class TestApp : App
 
             ImGui.Separator();
 
-            var renderer = RenderContext.ActiveRenderers.OfType<DefaultRenderer>().FirstOrDefault();
+            var renderer = RenderContext.GetRenderer<DefaultRenderer>();
             if (renderer != null)
             {
                 string status = renderer.DrawDebugColliders ? "ON" : "OFF";
@@ -92,6 +93,6 @@ public class TestApp : App
 
     public void ToggleDebugColliderRendering()
     {
-        RenderContext.ActiveRenderers.OfType<DefaultRenderer>().FirstOrDefault<DefaultRenderer>().DrawDebugColliders = !RenderContext.ActiveRenderers.OfType<DefaultRenderer>().FirstOrDefault<DefaultRenderer>().DrawDebugColliders;
+        RenderContext.GetRenderer<DefaultRenderer>().DrawDebugColliders = !RenderContext.GetRenderer<DefaultRenderer>().DrawDebugColliders;
     }
 }

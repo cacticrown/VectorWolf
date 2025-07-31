@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using VectorWolf.Resources;
 using VectorWolf.TileMaps;
 
 namespace VectorWolf.OgmoEditor;
@@ -12,8 +13,9 @@ public static class OgmoContext
     public static List<OgmoLayer> OgmoLayers;
     public static List<TileSet> TileSets = new();
 
-    public static void Initialize(string json)
+    public static void Initialize(string path)
     {
+        string json = ResourceManager.LoadText(path);
         JsonDocument document = JsonDocument.Parse(json);
 
         OgmoVersion = document.RootElement.GetProperty("ogmoVersion").GetString();
