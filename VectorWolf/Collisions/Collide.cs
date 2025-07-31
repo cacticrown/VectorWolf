@@ -22,15 +22,32 @@ public static class Collide
     {
         return (collider1, collider2) switch
         {
+            // Rectangle vs Rectangle
             (RectangleCollider rect1, RectangleCollider rect2) => Check(rect1, rect2),
+
+            // Rectangle vs Grid
             (RectangleCollider rect, GridCollider grid) => Check(rect, grid),
             (GridCollider grid, RectangleCollider rect) => Check(rect, grid),
-            (ColliderList list1, ColliderList list2) => Check(list1, list2),
-            (ColliderList list, RectangleCollider rect) => Check(rect, list),
+
+            // Rectangle vs ColliderList
             (RectangleCollider rect, ColliderList list) => Check(rect, list),
+            (ColliderList list, RectangleCollider rect) => Check(rect, list),
+
+            // Grid vs Grid
+            (GridCollider grid1, GridCollider grid2) => Check(grid1, grid2),
+
+            // Grid vs ColliderList
+            (GridCollider grid, ColliderList list) => Check(grid, list),
+            (ColliderList list, GridCollider grid) => Check(grid, list),
+
+            // ColliderList vs ColliderList
+            (ColliderList list1, ColliderList list2) => Check(list1, list2),
+
+            // Default fallback
             _ => false
         };
     }
+
 
     #region rectangle
 
