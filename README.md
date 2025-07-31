@@ -1,4 +1,9 @@
 # VectorWolf
+![Build](https://github.com/cacticrown/VectorWolf/actions/workflows/dotnet.yml/badge.svg)
+![NuGet Downloads](https://img.shields.io/nuget/dt/VectorWolf)
+![License](https://img.shields.io/github/license/cacticrown/VectorWolf)
+![Stars](https://img.shields.io/github/stars/cacticrown/VectorWolf)
+![Last Commit](https://img.shields.io/github/last-commit/cacticrown/VectorWolf)
 
 **VectorWolf** is a small, lightweight game engine/framework I built primarily for making my own games. It's simple, modular and gives you full control.
 > ⚠️ **This engine was created primarily for my games and is not intended for public use.**
