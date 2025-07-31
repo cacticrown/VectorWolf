@@ -37,9 +37,9 @@ public class Coin : Entity
         Collider.Size = new Vector2(Rect.Width, Rect.Height);
         Collider.Entity = this;
 
-        if (Collider.CollideWith(Player.Collider))
+        if (Collider.Collides(Player.Collider))
         {
-            while (Collider.CollideWith(Player.Collider))
+            while (Collider.Collides(Player.Collider))
                 Position = new Vector2(Randomizer.Randomize(-200, 200), Randomizer.Randomize(-150, 150));
         }
     }

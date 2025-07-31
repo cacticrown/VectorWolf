@@ -9,7 +9,7 @@ public class RectangleCollider : Collider
     public Vector2 Size = Vector2.Zero;
     public Vector2 Offset = Vector2.Zero;
 
-    public bool CollideWith(RectangleCollider other) => GetRectangle().Intersects(other.GetRectangle());
+    public bool Collides(RectangleCollider other) => GetRectangle().Intersects(other.GetRectangle());
 
     public Rectangle GetRectangle()
     {

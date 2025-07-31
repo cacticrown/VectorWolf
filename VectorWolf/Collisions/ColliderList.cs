@@ -29,7 +29,7 @@ public class ColliderList : Collider
         }
     }
 
-    public bool Collide(ColliderList colliderList)
+    public bool Collides(ColliderList colliderList)
     {
         foreach (var colliderA in Colliders)
         {
@@ -39,11 +39,31 @@ public class ColliderList : Collider
             {
                 if (colliderB is not RectangleCollider rectB) continue;
 
-                if (rectA.CollideWith(rectB))
+                if (rectA.Collides(rectB))
                     return true;
             }
         }
 
         return false;
+    }
+
+    public bool Collide(RectangleCollider collider1)
+    {
+        foreach (var collider2 in Colliders)
+        {
+            if (collider1 is not RectangleCollider rectangleCollider) continue;
+
+            if (collider1.Collides(rectangleCollider))
+                return true;
+        }
+        return false;
+    }
+
+    public override void DebugDraw(int lineThickness = 2)
+    {
+        foreach(var collider in Colliders)
+        {
+            collider.DebugDraw(lineThickness);
+        }
     }
 }
