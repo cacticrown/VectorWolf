@@ -59,6 +59,19 @@ public class ColliderList : Collider
         return false;
     }
 
+    public bool Collide(GridCollider gridCollider)
+    {
+        foreach (var collider in Colliders)
+        {
+            if (collider is RectangleCollider rectangleCollider)
+            {
+                if (gridCollider.Collides(rectangleCollider.GetRectangle()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
     public override void DebugDraw(int lineThickness = 2)
     {
         foreach(var collider in Colliders)
