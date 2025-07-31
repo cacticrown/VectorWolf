@@ -11,31 +11,25 @@ public static class Collide
         {
             foreach (var collider2 in colliderList2.Colliders)
             {
-                if (collider1 is RectangleCollider rect1 && collider2 is RectangleCollider rect2)
-                {
-                    if (Check(rect1, rect2))
-                    {
-                        return true;
-                    }
-                }
-                else if (collider1 is RectangleCollider rect && collider2 is GridCollider grid)
-                {
-                    if (Check(rect, grid))
-                    {
-                        return true;
-                    }
-                }
-                else if (collider1 is GridCollider gridcollider && collider2 is RectangleCollider rectangle)
-                {
-                    if (Check(rectangle, gridcollider))
-                    {
-                        return true;
-                    }
-                }
+                if (Check(collider1, collider2))
+                    return true;
             }
         }
-
         return false;
+    }
+
+    public static bool Check(Collider collider1, Collider collider2)
+    {
+        return (collider1, collider2) switch
+        {
+            (RectangleCollider rect1, RectangleCollider rect2) => Check(rect1, rect2),
+            (RectangleCollider rect, GridCollider grid) => Check(rect, grid),
+            (GridCollider grid, RectangleCollider rect) => Check(rect, grid),
+            (ColliderList list1, ColliderList list2) => Check(list1, list2),
+            (ColliderList list, RectangleCollider rect) => Check(rect, list),
+            (RectangleCollider rect, ColliderList list) => Check(rect, list),
+            _ => false
+        };
     }
 
     #region rectangle
