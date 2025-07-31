@@ -5,19 +5,6 @@ namespace VectorWolf.Collisions;
 
 public static class Collide
 {
-    public static bool Check(ColliderList colliderList1, ColliderList colliderList2)
-    {
-        foreach (var collider1 in colliderList1.Colliders)
-        {
-            foreach (var collider2 in colliderList2.Colliders)
-            {
-                if (Check(collider1, collider2))
-                    return true;
-            }
-        }
-        return false;
-    }
-
     public static bool Check(Collider collider1, Collider collider2)
     {
         return (collider1, collider2) switch
@@ -37,8 +24,8 @@ public static class Collide
             (GridCollider grid1, GridCollider grid2) => Check(grid1, grid2),
 
             // Grid vs ColliderList
-            (GridCollider grid, ColliderList list) => Check(grid, list),
-            (ColliderList list, GridCollider grid) => Check(grid, list),
+            (GridCollider grid, ColliderList list) => Check(list, grid),
+            (ColliderList list, GridCollider grid) => Check(list, grid),
 
             // ColliderList vs ColliderList
             (ColliderList list1, ColliderList list2) => Check(list1, list2),
@@ -48,6 +35,36 @@ public static class Collide
         };
     }
 
+    public static bool Check(ColliderList colliderList, GridCollider gridCollider)
+    {
+        foreach (var collider in colliderList.Colliders)
+        {
+            if (collider is RectangleCollider rectangleCollider)
+            {
+                if (Check(rectangleCollider, gridCollider))
+                    return true;
+            }
+            if (collider is ColliderList listCollider)
+            {
+                if (Check(listCollider, gridCollider))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool Check(ColliderList colliderList1, ColliderList colliderList2)
+    {
+        foreach (var collider1 in colliderList1.Colliders)
+        {
+            foreach (var collider2 in colliderList2.Colliders)
+            {
+                if (Check(collider1, collider2))
+                    return true;
+            }
+        }
+        return false;
+    }
 
     #region rectangle
 
@@ -91,7 +108,7 @@ public static class Collide
                 if (Check(rectangleCollider, rectCollider))
                     return true;
             }
-            if(collider is GridCollider gridCollider)
+            if (collider is GridCollider gridCollider)
             {
                 if (Check(rectangleCollider, gridCollider))
                     return true;
