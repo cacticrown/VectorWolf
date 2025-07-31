@@ -20,20 +20,9 @@ public class RectangleCollider : Collider
             (int)Size.Y
         );
     }
-
-    public override void DebugDraw(int lineThickness = 2)
+    public override void DebugDraw(int lineThickness = 2, float transparency = 0.5f)
     {
         var rect = GetRectangle();
-        var sb = RenderContext.SpriteBatch;
-        Texture2D pixel = RenderContext.Pixel;
-
-        // Top
-        sb.Draw(pixel, new Rectangle(rect.Left, rect.Top, rect.Width, lineThickness), Color.Red);
-        // Bottom
-        sb.Draw(pixel, new Rectangle(rect.Left, rect.Bottom - lineThickness, rect.Width, lineThickness), Color.Red);
-        // Left
-        sb.Draw(pixel, new Rectangle(rect.Left, rect.Top, lineThickness, rect.Height), Color.Red);
-        // DebugDrawThickness
-        sb.Draw(pixel, new Rectangle(rect.Right - lineThickness, rect.Top, lineThickness, rect.Height), Color.Red);
+        RenderHelper.DrawRectangleOutline(rect, Color.Red * transparency, lineThickness);
     }
 }

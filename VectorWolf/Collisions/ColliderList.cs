@@ -72,7 +72,7 @@ public class ColliderList : Collider
         return false;
     }
 
-    public override void DebugDraw(int lineThickness = 2)
+    public override void DebugDraw(int lineThickness = 2, float transparency = 0.5f)
     {
         foreach(var collider in Colliders)
         {
