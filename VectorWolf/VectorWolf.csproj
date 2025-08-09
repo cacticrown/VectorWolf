@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Title>VectorWolf</Title>
-    <Version>0.1</Version>
+    <Version>0.2.0</Version>
     <Authors>cacticrown</Authors>
     <Description>A lightweight, cross-platform 2D game framework based on MonoGame.</Description>
     <RepositoryUrl>https://github.com/cacticrown/VectorWolf</RepositoryUrl>
