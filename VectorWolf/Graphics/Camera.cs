@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using VectorWolf;
 
+namespace VectorWolf.Graphics;
+
 public class Camera : Component
 {
     public Vector2 Position = Vector2.Zero;
