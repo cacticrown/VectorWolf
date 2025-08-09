@@ -95,7 +95,10 @@ public class Scene
 
     public virtual void Initialize()
     {
-
+        foreach (var entity in Entities)
+        {
+            entity.Initialize();
+        }
     }
 
     public void FinishedInitializing()

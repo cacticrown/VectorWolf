@@ -36,6 +36,14 @@ public class Entity
         return Components.GetComponent<T>();
     }
 
+    public virtual void Initialize()
+    {
+        foreach (var component in Components)
+        {
+            component.Initialize();
+        }
+    }
+
     public virtual void OnSceneStart()
     {
         foreach(var component in Components)

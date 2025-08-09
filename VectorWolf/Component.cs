@@ -24,4 +24,9 @@ public class Component
     {
         
     }
+
+    public virtual void Initialize()
+    {
+
+    }
 }
