@@ -14,6 +14,8 @@ public class DefaultRenderer : Renderer
     public Color BackgroundColor = Color.CornflowerBlue;
 
     public bool DrawDebugColliders = false;
+    public int DebugColliderThickness = 2;
+    public Color DebugColliderColor = Color.Red;
 
     public override void Render(Scene scene)
     {
@@ -37,7 +39,7 @@ public class DefaultRenderer : Renderer
                 if (entity.GetComponent<RectangleCollider>() != null)
                 {
                     var collider = entity.GetComponent<RectangleCollider>() as RectangleCollider;
-                    collider.DebugDraw();
+                    collider.DebugDraw(DebugColliderThickness, DebugColliderColor);
                 }
             }
         }

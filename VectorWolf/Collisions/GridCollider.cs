@@ -63,7 +63,7 @@ namespace VectorWolf.Collisions
             return x >= 0 && y >= 0 && x < Width && y < Height;
         }
 
-        public override void DebugDraw(int lineThickness = 2, float transparency = 0.5f)
+        public override void DebugDraw(int lineThickness, Color color)
         {
             for (int y = 0; y < Height; y++)
             {
@@ -73,7 +73,7 @@ namespace VectorWolf.Collisions
 
                     if (CollisionGrid[x, y])
                     {
-                        RenderHelper.DrawRectangleOutline(rect, Color.Red * transparency, lineThickness);
+                        RenderHelper.DrawRectangleOutline(rect, color, lineThickness);
                     }
                 }
             }

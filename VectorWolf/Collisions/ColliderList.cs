@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace VectorWolf.Collisions;
 
@@ -72,11 +73,11 @@ public class ColliderList : Collider
         return false;
     }
 
-    public override void DebugDraw(int lineThickness = 2, float transparency = 0.5f)
+    public override void DebugDraw(int lineThickness, Color color)
     {
         foreach(var collider in Colliders)
         {
-            collider.DebugDraw(lineThickness);
+            collider.DebugDraw(lineThickness, color);
         }
     }
 }
