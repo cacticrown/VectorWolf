@@ -20,9 +20,10 @@ public class RectangleCollider : Collider
             (int)Size.Y
         );
     }
-    public override void DebugDraw(int lineThickness = 2, float transparency = 0.5f)
+
+    public override void DebugDraw(int lineThickness, Color color)
     {
         var rect = GetRectangle();
-        RenderHelper.DrawRectangleOutline(rect, Color.Red * transparency, lineThickness);
+        RenderHelper.DrawRectangleOutline(rect, color, lineThickness);
     }
 }
