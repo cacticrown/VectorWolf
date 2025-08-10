@@ -43,7 +43,12 @@ public class Scene
     public T GetEntity<T>() where T : Entity
     {
         return Entities.OfType<T>().FirstOrDefault();
-    }    
+    }  
+    
+    public IEnumerable<T> GetEntities<T>() where T : Entity
+    {
+        return Entities.OfType<T>();
+    }
 
     public void Update()
     {
