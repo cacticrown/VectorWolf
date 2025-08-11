@@ -65,26 +65,17 @@ public class Engine : Game
         Input.Update();
 
 
-        if (Scene != null)
+        if (Scene != NextScene)
         {
-            if (Scene != NextScene)
-            {
+            if (Scene != null)
                 Scene.OnDestroy();
-                App.OnSceneTransition(Scene, NextScene);
-                Scene = NextScene;
-                GC.Collect(); // collect garbage to make sure the garbage collector won't run during gameplay
-                InitScene(Scene);
-            }
-            Scene.Update();
+            App.OnSceneTransition(Scene, NextScene);
+            Scene = NextScene;
+            GC.Collect(); // collect garbage to make sure the garbage collector won't run during gameplay
+            InitScene(Scene);
         }
-        else
-        {
-            if (NextScene != null)
-            {
-                Scene = NextScene;
-                InitScene(Scene);
-            }
-        }
+        Scene.Update();
+
 
             App.Update();
 
