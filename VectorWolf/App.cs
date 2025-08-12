@@ -21,6 +21,7 @@ public class App
 
     public virtual void Initialize() { }
     public virtual void LoadContent() { }
+    public virtual void PreUpdate() { }
     public virtual void Update() { }
     public virtual void Draw() { }
     public virtual void OnExit() { }

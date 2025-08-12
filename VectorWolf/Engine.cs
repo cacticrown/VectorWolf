@@ -64,7 +64,6 @@ public class Engine : Game
         Time.Update(gameTime);
         Input.Update();
 
-
         if (Scene != NextScene)
         {
             if (Scene != null)
@@ -74,10 +73,13 @@ public class Engine : Game
             GC.Collect(); // collect garbage to make sure the garbage collector won't run during gameplay
             InitScene(Scene);
         }
+
+
+        App.PreUpdate();
+
         Scene.Update();
 
-
-            App.Update();
+        App.Update();
 
         base.Update(gameTime);
     }
