@@ -77,7 +77,8 @@ public class Engine : Game
 
         App.PreUpdate();
 
-        Scene.Update();
+        if(Scene != null)
+            Scene.Update();
 
         App.Update();
 
